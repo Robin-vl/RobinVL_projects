@@ -1,0 +1,120 @@
+<ion-app>
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title size="large" class="ion-text-center">
+      Pokédex <ion-icon name="search-outline"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Welcome! Please enter your search:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="reactForm">
+        <ion-list>
+          <ion-radio-group formControlName="search">
+            <ion-list-header>
+              <ion-label>
+                Choose searchtype
+              </ion-label>
+            </ion-list-header>
+            <ion-item lines="none">
+              <ion-label>Name</ion-label>
+              <ion-radio slot="start" value="name" name="naam"></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>Number</ion-label>
+              <ion-radio slot="start" value="numb1" name="numb1"></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>Type</ion-label>
+              <ion-radio slot="start" value="type" name="typ"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </form>
+      <form [formGroup]="pokeForm" (ngSubmit)="getPok()">
+        <ion-item *ngIf="this.reactForm.get('search').value == 'name'">
+          <ion-label position="floating">Search by name</ion-label>
+          <ion-input formControlName="naam"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="this.reactForm.get('search').value == 'numb1'">
+          <ion-label position="floating">Search by number</ion-label>
+          <ion-input formControlName="num"></ion-input>
+        </ion-item>
+        <ion-text *ngIf="this.pokeForm.get('num').invalid" size="small" color="danger"> <ion-icon name="alert-outline"></ion-icon>Enter a number between 1 & 807</ion-text>
+        <ion-item *ngIf="this.reactForm.get('search').value == 'type'">
+          <ion-label position="floating">Search by type</ion-label>
+          <ion-input formControlName="type"></ion-input>
+        </ion-item>
+        <div class="ion-text-center">
+          <ion-button type="submit" color="warning" [disabled]="this.pokeForm.invalid">Search</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <img
+          *ngIf="!verzPok.length && searchBool"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/640px-International_Pok%C3%A9mon_logo.svg.png"
+        />
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!searchBool">
+      <ion-col>
+        <ion-card class="ion-text-center">
+          <img src="{{pokemon.afbeelding}}" />
+          <ion-card-header>
+            <ion-card-title>{{pokemon.name | titlecase}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p># {{pokemon.id}}</p>
+            <p>Type : {{pokemon.type1}}</p>
+            <p *ngIf="!(pokemon.type2 == undefined)">
+              Type 2 : {{pokemon.type2}}
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item *ngFor="let p of verzPok" class="ion-text-center">
+                <ion-label>
+                  <div>
+                    <ion-title>{{p.name | titlecase}}</ion-title>
+                    <p># {{p.id}}</p>
+                    <p>Type : {{p.type1}}</p>
+                    <p *ngIf="!(p.type2 == undefined)">
+                      Type 2 : {{p.type2}}
+                    </p>
+                  </div>
+
+                  <div><img src="{{p.afbeelding}}" /></div>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+             <ion-button class="ion-text-center" *ngIf="verzPok.length" color="warning" (click)="verzPok = []">Clear list</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="warning" class="ion-text-center">
+    <ion-title> &copy; Robin Van Landeghem - 2020</ion-title>
+  </ion-toolbar>
+</ion-footer>
+</ion-app>

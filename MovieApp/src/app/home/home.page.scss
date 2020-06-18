@@ -1,0 +1,40 @@
+.search{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+  .searchBut{
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+  }
+}
+ion-input{
+  border:1px solid rgba(0, 0, 0, 0.26);
+}
+ion-card{
+  ion-card-header{
+    width: 250px;
+    img{
+      min-width: 150px;
+    }
+  }
+  ion-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+#lijst{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+//align self end voor button?

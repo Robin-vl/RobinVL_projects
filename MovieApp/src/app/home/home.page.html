@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center">
+      MovApp: You're favorite movie-app!
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="search">
+          <ion-item lines="none">
+            <ion-label>Search Movie: </ion-label>
+            <ion-input id="zoek" #movie></ion-input>
+          </ion-item>
+          <div class="searchBut">
+            <ion-button color="warning" (click)="searchMovie(movie.value)"
+              ><ion-icon slot="icon-only" name="arrow-forward-outline"></ion-icon></ion-button
+            >
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngIf="!movies.length" size="6" offset="3">
+        <ion-img src="https://images-na.ssl-images-amazon.com/images/I/717BJL9gAAL._AC_SL1500_.jpg"></ion-img>
+      </ion-col>
+      <ion-col *ngIf="movies.length">
+        <p>{{movies.length}} result(s) for: {{movie.value}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item *ngFor="let mov of movies">
+            <ion-label>
+              <ion-card color="medium" class="ion-text-center">
+                <ion-card-header>
+                  <img src="{{mov.Poster}}">   
+                </ion-card-header>            
+                <ion-card-content>
+                  <ion-card-title>{{mov.Title}}</ion-card-title>
+                  {{mov.Year}}
+                  <ion-button color="danger" [routerLink]="['./list', mov.imdb]">More</ion-button>
+                </ion-card-content>
+              </ion-card>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
