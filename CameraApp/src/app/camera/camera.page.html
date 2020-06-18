@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center" color="warning">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Camera</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-img src="https://mymodernmet.com/wp/wp-content/uploads/2017/09/polaroid-one-step-2-i-type-film-9.jpg"></ion-img>
+    <ion-card-content>
+      <ion-fab vertical="center" horizontal="center" slot="fixed">
+        <ion-fab-button color="danger" (click)="fotoNemen()">
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-card-content>
+    <div id="titel" class="ion-text-center">
+      <ion-card-title>Take a Photograph!</ion-card-title>
+    </div>
+  </ion-card>
+  <ion-card *ngIf="foto.data !=''">
+    <ion-img [src]="'data:image/jpeg;base64,'+ foto.data "></ion-img>
+    <ion-header>
+      <ion-card-title class="ion-text-center">
+        You're picture!
+      </ion-card-title>
+    </ion-header>
+    <ion-card-content class="ion-text-center">
+      <ion-button color="danger" (click)="opslaan()">
+        <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" (click)="delete()">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

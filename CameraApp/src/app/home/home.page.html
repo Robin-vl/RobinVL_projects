@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center" color="warning">
+    <ion-title>Camera-applicatie</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <h2 class="ion-text-center">Make you're choise!</h2>
+  <ion-fab vertical="center" horizontal="center" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="grid-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button routerLink='camera' color="warning"><ion-icon name="camera-outline"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+      <ion-fab-button routerLink='/galerij' color="warning"><ion-icon name="images-outline"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="warning" class="ion-text-center">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Galerij</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngFor="let foto of fotoGalerij">
+        <ion-card>
+          <ion-img [src]="'data:image/jpeg;base64,'+ foto.data "></ion-img>
+          <ion-card-content class="ion-text-center">
+            <ion-button color="danger" (click)="verwFoto(foto.id)">
+              <ion-icon size="icon-only" name="trash"></ion-icon>
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "cameraherhaling",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
