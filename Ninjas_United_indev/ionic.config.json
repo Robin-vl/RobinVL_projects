@@ -1,0 +1,7 @@
+{
+  "name": "Ninjas_United",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
