@@ -54,8 +54,7 @@ export class TimerPage implements OnInit {
     document.getElementById('min').innerHTML = `25 : 00`;
   }
   pauseTimer(){
-    let stopTijd = document.getElementById('min');
-    console.log(stopTijd);
+    //timeleft bijhouden 
   }
   tim() {
     // trilfunctie
