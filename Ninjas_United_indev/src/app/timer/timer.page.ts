@@ -60,7 +60,7 @@ export class TimerPage implements OnInit {
   tim() {
     // trilfunctie
     this.startKnop = true;
-    var countDown = new Date(Date.now()+(1*60*1000)).getTime();
+    var countDown = new Date(Date.now()+(25*60*1000)).getTime();
     this.tijdFunc = this.ngz.run(()  =>setInterval(function() {
       let now = new Date().getTime();
       let timeLeft = countDown - now;
