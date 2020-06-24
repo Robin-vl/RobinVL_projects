@@ -1,4 +1,7 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { LoginService } from '../login.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,15 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private loginserv: LoginService, private rout: Router) {}
+  
+  login(mail:string, ww:string){
+    this.loginserv.loginFireb(mail,ww).subscribe(data=>{
+      this.loginserv.gegevensGeb.tokenId = data['idToken'];
+      this.loginserv.gegevensGeb.userId = data['localId'];
+      this.rout.navigateByUrl('main');
+    },
+    error =>{console.log(error['error'])});
+  }
 
 }

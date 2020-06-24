@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="ion-text-center">
     <ion-title>
       Welkom Ninja!
     </ion-title>
@@ -12,20 +12,19 @@
         <ion-card-header>
           <ion-card-title>Login</ion-card-title>
         </ion-card-header>
-
         <ion-card-content>
-          <form>
+          <form (ngSubmit)="login(mail.value, ww.value)">
             <ion-item>
-              <ion-label position="stacked">Gebruikersnaam of Email</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-label position="stacked">Email (test@test.be)</ion-label>
+              <ion-input type="text" #mail></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="stacked">Wachtwoord</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-label position="stacked">Wachtwoord (test123)</ion-label>
+              <ion-input type="password" #ww></ion-input>
             </ion-item>
             <div class="mt-3" id="inlogbuttons">
-              <ion-button [routerLink]="['/main']">Log-in</ion-button>
-              <a routerLink="">Nieuwe gebruiker</a>
+              <ion-button type="submit">Log-in</ion-button>
+              <a routerLink="./registratie">Nieuwe gebruiker</a>
             </div>
           </form>
         </ion-card-content>
