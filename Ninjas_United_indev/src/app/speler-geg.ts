@@ -1,3 +1,10 @@
 export class SpelerGeg {
-    public naam:string;
+  constructor(
+    public naam?: string,
+    public bijnaam?: string,
+    public wedstrijden?: number,
+    public assists?: number,
+    public goals?: number,
+    public id?:string
+  ) {}
 }

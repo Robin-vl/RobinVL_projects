@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item> <ion-icon slot="start" name="moon-sharp"></ion-icon>Dark Mode<ion-toggle slot="end" name="dark" id="darkToggle"(ionChange)="darken($event)"></ion-toggle></ion-item>
+  <ion-item><ion-icon slot="start" name="search-sharp"></ion-icon>Lettertype</ion-item>
+</ion-content>

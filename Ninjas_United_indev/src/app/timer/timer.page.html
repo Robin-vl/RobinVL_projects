@@ -1,65 +1,86 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Wedstrijdtimer</ion-title>
+    <ion-title>Wedstrijd</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<!-- Trilfunctie & Alert insteken op 0:00:00 -->
-<!-- Noteren van goals en assists -->
 <ion-content>
-<ion-card class="ion-text-center">
-    <ion-card-title *ngIf="!(min ==0 && sec ==0)" id="min"><span *ngIf="min <10">0</span>{{min}} : <span *ngIf="sec <10">0</span>{{sec}}</ion-card-title>
+  <ion-card class="ion-text-center">
+    <ion-card-title *ngIf="!(min ==0 && sec ==0)" id="min"
+      ><span *ngIf="min <10">0</span>{{min}} :
+      <span *ngIf="sec <10">0</span>{{sec}}</ion-card-title
+    >
     <ion-card-title *ngIf="min ==0 && sec ==0">Time's up!</ion-card-title>
-  <ion-card-content>
-    <ion-button color="warning" (click)="tim()" [disabled]="startKnop">
-      <ion-icon name="play"></ion-icon>
-    </ion-button>
-    <ion-button color="warning" (click)="pauseTimer()">
-      <ion-icon name="pause"></ion-icon>
-    </ion-button>
-    <ion-button color="warning" (click)="resetTimer()">
-      <ion-icon name="refresh"></ion-icon>
-    </ion-button>
-  </ion-card-content>
-</ion-card>
-<ion-grid>
-  <ion-row>
-    <ion-col>
-      <form>
-        <ion-item>
-          <ion-label for="speler">Speler:</ion-label>
-          <ion-select name="speler">
-            <ion-select-option value="robin">Robin</ion-select-option>
-            <ion-select-option value="jens">Jens</ion-select-option>
-            <ion-select-option value="gommaar">Gommaar</ion-select-option>
-            <ion-select-option value="joris">Joris</ion-select-option>
-            <ion-select-option value="nick">Nick</ion-select-option>
-            <ion-select-option value="patrick">Patrick</ion-select-option>
-            <ion-select-option value="andy">Andy</ion-select-option>
-          </ion-select>
-          <ion-radio-group>
-            <ion-item>
-              <ion-label>Goal </ion-label><ion-radio value="goal"></ion-radio>
-            </ion-item>
-            <ion-item lines="none">
-              <ion-label>Assist &nbsp;</ion-label><ion-radio value="assist"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
+    <ion-card-content>
+      <ion-button color="warning" (click)="tim()" [disabled]="startKnop">
+        <ion-icon name="play"></ion-icon>
+      </ion-button>
+      <ion-button color="warning" (click)="pauseTimer()">
+        <ion-icon name="pause"></ion-icon>
+      </ion-button>
+      <ion-button color="warning" (click)="resetTimer()">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form>
+          <ion-item>
+            <ion-label>Wedstrijd</ion-label>
+            <ion-select name="wedstijd">
+              <ion-select-option
+                *ngFor="let wed of wedstrijden"
+                [value]="wed.id"
+                >{{wed.datum}} - {{wed.thuisploeg}} vs
+                {{wed.uitploeg}}</ion-select-option
+              >
+            </ion-select>
           </ion-item>
-      </form>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-list>
-        <ion-item>Goal: Joris & Assist: Jens</ion-item>
-        <ion-item>Goal: Joris & Assist: Gommaar</ion-item>
-        <ion-item>Goal: Jens & Assist: Gommaar</ion-item>
-      </ion-list>
-      <ion-button color="warning">Verstuur</ion-button>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+          <ion-item>
+            <ion-label for="speler">Speler:</ion-label>
+            <ion-select name="speler">
+              <ion-select-option
+                *ngFor="let speler of dataSpelers"
+                [value]="speler.naam"
+                >{{speler.naam}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-radio-group>
+              <ion-item>
+                <ion-label>Goal </ion-label><ion-radio value="goal"></ion-radio>
+              </ion-item>
+            <ion-item>
+              <ion-label>Assist &nbsp;</ion-label
+              ><ion-radio value="assist"></ion-radio>
+            </ion-item>
+            </ion-radio-group>
+            <ion-fab-button slot="end" color="warning">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list> 
+          <ion-item>
+            
+          </ion-item>
+        </ion-list>
+        <div class='ion-text-center'>
+          <ion-button color="warning">Verzenden</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

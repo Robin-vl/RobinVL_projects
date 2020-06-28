@@ -1,6 +1,12 @@
+import { Match } from './../match';
+import { WedstrijdenService } from './../wedstrijden.service';
+import { SpelersgegevensService } from './../spelersgegevens.service';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from "@angular/core";
 import { Plugins, HapticsImpactStyle } from "@capacitor/core";
+import { SpelerGeg } from '../speler-geg';
+import { WedstrijdenService } from '../wedstrijden.service';
+import { Wedstrijd } from '../wedstrijd';
 
 const { Haptics } = Plugins;
 
@@ -10,7 +16,7 @@ const { Haptics } = Plugins;
   styleUrls: ["./timer.page.scss"],
 })
 export class TimerPage implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(private spelersServ:SpelersgegevensService, private wedstrijdSer: WedstrijdenService) {}
   public tijdFunc;
   public startKnop: boolean = false;
   public pauze: boolean;
@@ -18,7 +24,14 @@ export class TimerPage implements OnInit {
   public min: number = 25;
   public sec: number = 0;
   public timeLeft;
+  public dataSpelers:SpelerGeg[] =[];
+  public wedstrijden: Wedstrijd[]=[];
+  public matchStat: Match[] =[];
   ngOnInit(): void {}
+  ionViewWillEnter(){
+    this.getGegevens();
+    this.getGames();
+  }
   resetTimer() {
     this.pauze = false;
     this.min = 25;
@@ -51,4 +64,19 @@ export class TimerPage implements OnInit {
       }
     }, 1000);
   }
+  getGegevens(){
+    this.spelersServ.getSpelers().subscribe(data=>{
+      this.dataSpelers = data;
+      console.log(this.dataSpelers);
+    });
+  }
+  getGames(){
+    this.wedstrijdSer.getWed().subscribe(data=>{
+      this.wedstrijden = data;
+    });
+  }
+  liveMatch(naam:string){
+    let playerStat: Match = new Match(naam)
+  }
+
 }
