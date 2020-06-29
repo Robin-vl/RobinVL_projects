@@ -1,12 +1,11 @@
-import { Match } from './../match';
-import { WedstrijdenService } from './../wedstrijden.service';
-import { SpelersgegevensService } from './../spelersgegevens.service';
-import { FormBuilder } from '@angular/forms';
+import { Match } from "./../match";
+import { WedstrijdenService } from "./../wedstrijden.service";
+import { SpelersgegevensService } from "./../spelersgegevens.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { Plugins, HapticsImpactStyle } from "@capacitor/core";
-import { SpelerGeg } from '../speler-geg';
-import { WedstrijdenService } from '../wedstrijden.service';
-import { Wedstrijd } from '../wedstrijd';
+import { SpelerGeg } from "../speler-geg";
+import { Wedstrijd } from "../wedstrijd";
 
 const { Haptics } = Plugins;
 
@@ -16,7 +15,11 @@ const { Haptics } = Plugins;
   styleUrls: ["./timer.page.scss"],
 })
 export class TimerPage implements OnInit {
-  constructor(private spelersServ:SpelersgegevensService, private wedstrijdSer: WedstrijdenService) {}
+  constructor(
+    private spelersServ: SpelersgegevensService,
+    private wedstrijdSer: WedstrijdenService,
+    private fb: FormBuilder
+  ) {}
   public tijdFunc;
   public startKnop: boolean = false;
   public pauze: boolean;
@@ -24,11 +27,11 @@ export class TimerPage implements OnInit {
   public min: number = 25;
   public sec: number = 0;
   public timeLeft;
-  public dataSpelers:SpelerGeg[] =[];
-  public wedstrijden: Wedstrijd[]=[];
-  public matchStat: Match[] =[];
+  public dataSpelers: SpelerGeg[] = [];
+  public wedstrijden: Wedstrijd[] = [];
+  public matchStat: Match[] = [];
   ngOnInit(): void {}
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.getGegevens();
     this.getGames();
   }
@@ -64,19 +67,30 @@ export class TimerPage implements OnInit {
       }
     }, 1000);
   }
-  getGegevens(){
-    this.spelersServ.getSpelers().subscribe(data=>{
+  public wedstrijdForm = this.fb.group({
+    game: [""],
+    player: [""],
+    goalAss: [""],
+  });
+
+  getGegevens() {
+    this.spelersServ.getSpelers().subscribe((data) => {
       this.dataSpelers = data;
       console.log(this.dataSpelers);
     });
   }
-  getGames(){
-    this.wedstrijdSer.getWed().subscribe(data=>{
+  getGames() {
+    this.wedstrijdSer.getWed().subscribe((data) => {
       this.wedstrijden = data;
     });
   }
-  liveMatch(naam:string){
-    let playerStat: Match = new Match(naam)
+  liveMatch(naam: string) {
+    let playerStat: Match = new Match(naam);
+    if (this.wedstrijdForm.get("goalAss").value === "goal") {
+      playerStat.goals++;
+    } else if (this.wedstrijdForm.get("goalAss").value === "assist") {
+      playerStat.assists++;
+    }
+    this.matchStat.push(playerStat);
   }
-
 }

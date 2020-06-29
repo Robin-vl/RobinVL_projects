@@ -31,10 +31,13 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <form>
+        <form
+          [formGroup]="wedstrijdForm"
+          (ngSubmit)="liveMatch(wedstrijdForm.get('player').value, wedstrijdForm.get('goalAss').value)"
+        >
           <ion-item>
             <ion-label>Wedstrijd</ion-label>
-            <ion-select name="wedstijd">
+            <ion-select name="wedstijd" formControlName="game">
               <ion-select-option
                 *ngFor="let wed of wedstrijden"
                 [value]="wed.id"
@@ -45,7 +48,7 @@
           </ion-item>
           <ion-item>
             <ion-label for="speler">Speler:</ion-label>
-            <ion-select name="speler">
+            <ion-select name="speler" formControlName="player">
               <ion-select-option
                 *ngFor="let speler of dataSpelers"
                 [value]="speler.naam"
@@ -54,30 +57,28 @@
             </ion-select>
           </ion-item>
           <ion-item lines="none">
-            <ion-radio-group>
+            <ion-radio-group formControlName="goalAss">
               <ion-item>
                 <ion-label>Goal </ion-label><ion-radio value="goal"></ion-radio>
               </ion-item>
-            <ion-item>
-              <ion-label>Assist &nbsp;</ion-label
-              ><ion-radio value="assist"></ion-radio>
-            </ion-item>
+              <ion-item>
+                <ion-label>Assist &nbsp;</ion-label
+                ><ion-radio value="assist"></ion-radio>
+              </ion-item>
             </ion-radio-group>
-            <ion-fab-button slot="end" color="warning">
-              <ion-icon name="add"></ion-icon>
-            </ion-fab-button>
+            <ion-button color="warning" shape="round" slot="end" type="submit"><ion-icon slot="icon-only" name="add"></ion-icon></ion-button>
           </ion-item>
         </form>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-list> 
-          <ion-item>
-            
+        <ion-list *ngIf="matchStat.length >0">
+          <ion-item *ngFor="let i of matchStat">
+            {{i.speler}}: {{i.goals}} goal(s) & {{i.assists}} assist(s)
           </ion-item>
         </ion-list>
-        <div class='ion-text-center'>
+        <div class="ion-text-center">
           <ion-button color="warning">Verzenden</ion-button>
         </div>
       </ion-col>
