@@ -74,8 +74,9 @@
     <ion-row>
       <ion-col>
         <ion-list *ngIf="matchStat.length >0">
-          <ion-item *ngFor="let i of matchStat">
-            {{i.speler}}: {{i.goals}} goal(s) & {{i.assists}} assist(s)
+          <ion-item *ngIf="reedsAanw">Persoon is reeds toegevoegd!</ion-item>
+          <ion-item *ngFor="let i of matchStat | keyvalue">
+            {{i.value.speler}}: {{i.value.goals}} goal(s) <ion-button color="warning" (click)="optellenGoals(i.key)"><ion-icon  slot="icon-only" name="add"></ion-icon></ion-button> & {{i.value.assists}} assist(s) <ion-button (click)="optellenAssists(i.key)"color="warning"><ion-icon  slot="icon-only" name="add"></ion-icon></ion-button>
           </ion-item>
         </ion-list>
         <div class="ion-text-center">

@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar class="ion-text-center">
     <ion-title>Welkom {{naamUser.naam}}</ion-title>
+    <ion-button fill="outline" slot="end" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button> 
   </ion-toolbar>
 </ion-header>
 

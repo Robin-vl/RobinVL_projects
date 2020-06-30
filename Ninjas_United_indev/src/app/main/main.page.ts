@@ -1,6 +1,9 @@
+import { Router } from '@angular/router';
+import { Logingeg } from './../logingeg';
 import { SpelerGeg } from './../speler-geg';
 import { UsernaamService } from './../usernaam.service';
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-main',
@@ -9,14 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPage implements OnInit {
 
-  constructor(private userName:UsernaamService) { }
+  constructor(private userName:UsernaamService, private loginServ: LoginService, private rout:Router) { }
   naamUser:SpelerGeg = new SpelerGeg();
-  ngOnInit() {}
+  ngOnInit() {
+    this.userName.getData().subscribe(data=>{
+      this.naamUser = data;
+    })
+  }
 
   ionViewWillEnter(){
     this.userName.getData().subscribe(data=>{
       this.naamUser = data;
     })
   }
-
+  logout(){
+    this.loginServ.uitloggen();
+    this.rout.navigateByUrl('home');
+  }
 }

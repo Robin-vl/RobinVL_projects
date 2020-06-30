@@ -12,13 +12,12 @@ export class UsernaamService {
 
   constructor(private http:HttpClient, private loginServ:LoginService) { }
   getData():Observable<SpelerGeg>{
-    const speler = this.loginServ.gegevensGeb.userId;
-    const spelerToken  = this.loginServ.gegevensGeb.tokenId;
+    let gegevens = JSON.parse(localStorage.getItem('login'));
+    const speler = gegevens['userid'];
+    const spelerToken  =gegevens['token']
     return this.http.get(`https://lzv-nu.firebaseio.com/spelers/${speler}.json?auth=${spelerToken}`).pipe(map(data=>{
         let spelerNaam: SpelerGeg = new SpelerGeg();
         spelerNaam.naam = data['naam'];
-        console.log(data['naam']);
-        console.log(spelerNaam);
         return spelerNaam;
     }));
   }

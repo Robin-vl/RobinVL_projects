@@ -30,6 +30,7 @@ export class TimerPage implements OnInit {
   public dataSpelers: SpelerGeg[] = [];
   public wedstrijden: Wedstrijd[] = [];
   public matchStat: Match[] = [];
+  public reedsAanw: boolean = false;
   ngOnInit(): void {}
   ionViewWillEnter() {
     this.getGegevens();
@@ -85,12 +86,37 @@ export class TimerPage implements OnInit {
     });
   }
   liveMatch(naam: string) {
-    let playerStat: Match = new Match(naam);
-    if (this.wedstrijdForm.get("goalAss").value === "goal") {
-      playerStat.goals++;
-    } else if (this.wedstrijdForm.get("goalAss").value === "assist") {
-      playerStat.assists++;
-    }
-    this.matchStat.push(playerStat);
+    //NIET OK => Alternatieve manier voor ontwikkelen!!!
+/*     if(this.matchStat.length ==0){
+      let playerStat: Match = new Match(naam);
+      if (this.wedstrijdForm.get("goalAss").value === "goal") {
+        playerStat.goals++;
+      } else if (this.wedstrijdForm.get("goalAss").value === "assist") {
+        playerStat.assists++;
+      }
+      this.matchStat.push(playerStat);
+    }else{
+      for(let i of this.matchStat){
+        if(i.speler != naam){
+          this.reedsAanw = false;
+          let playerStat: Match = new Match(naam);
+          if (this.wedstrijdForm.get("goalAss").value === "goal") {
+            playerStat.goals++;
+          } else if (this.wedstrijdForm.get("goalAss").value === "assist") {
+            playerStat.assists++;
+          }
+          this.matchStat.push(playerStat);
+        }else{
+          this.reedsAanw = true;
+        }
+      } 
+    } */
+  }
+
+  optellenGoals(i: number) {
+    this.matchStat[i].goals++;
+  }
+  optellenAssists(i: number) {
+    this.matchStat[i].assists++;
   }
 }

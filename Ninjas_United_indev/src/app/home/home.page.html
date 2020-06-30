@@ -13,17 +13,17 @@
           <ion-card-title>Login</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <form (ngSubmit)="login(mail.value, ww.value)">
+          <form #inlogForm="ngForm">
             <ion-item>
               <ion-label position="stacked">Email (test@test.be)</ion-label>
-              <ion-input type="text" #mail></ion-input>
+              <ion-input ngModel name ="mail" type="text" #mail="ngModel" required mail></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Wachtwoord (test123)</ion-label>
-              <ion-input type="password" #ww></ion-input>
+              <ion-input ngModel name="wachtwoord" type="password" #ww="ngModel" required></ion-input>
             </ion-item>
             <div class="mt-3" id="inlogbuttons">
-              <ion-button type="submit">Log-in</ion-button>
+              <ion-button color="warning" (click)="login(mail.value, ww.value, inlogForm)" [disabled]="inlogForm.invalid">Log-in</ion-button>
               <a routerLink="./registratie">Nieuwe gebruiker</a>
             </div>
           </form>
