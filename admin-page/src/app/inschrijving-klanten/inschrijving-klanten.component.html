@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="mb-3">Inschrijvingsform nieuwe klant</h3>
+            <form
+                (ngSubmit)="addKlant(voornaam.value, naam.value, plaats.value, postcode.value, straat.value)"
+                #klantForm="ngForm">
+                <div class="form-group">
+                    <label for="voornaam">Voornaam</label>
+                    <input type="text" class="form-control" id="voornaam" ngModel name="voornaam" #voornaam="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="naam">Achternaam</label>
+                    <input type="text" class="form-control" id="naam" ngModel name="naam" #naam="ngModel" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="naam.invalid && (naam.dirty || naam.touched)">
+                        Achternaam aanvullen!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="plaats">Plaats</label>
+                    <input type="text" class="form-control" id="plaats" ngModel name="plaats" #plaats="ngModel"
+                        required>
+                    <div class="alert alert-danger" role="alert" *ngIf="plaats.invalid &&(plaats.dirty || plaats.touched) ">
+                        Plaats aanvullen!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="postcode">Postcode</label>
+                    <input type="text" class="form-control" id="postcode" ngModel name="postcode" #postcode="ngModel"
+                        required>
+                    <div class="alert alert-danger" role="alert" *ngIf="postcode.invalid && (postcode.dirty || postcode.touched)">
+                        Plaats aanvullen!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="straat">Straat</label>
+                    <input type="text" class="form-control" id="straat" ngModel name="straat" #straat="ngModel"
+                        required>
+                    <div class="alert alert-danger" role="alert" *ngIf= "straat.invalid &&( straat.dirty || straat.touched)">
+                        Straat aanvullen!
+                    </div>
+                </div>
+                <div class="knoppen d-flex d-row justify-content-end">
+                    <button type="submit" class="btn btn-success" [disabled]="!klantForm.form.valid">Submit</button>
+                    <button type="button" class="btn btn-success ml-2" [routerLink]='["/klanten"]'> &lt; Terug naar overzicht</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

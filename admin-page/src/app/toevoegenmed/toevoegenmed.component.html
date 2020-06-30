@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form>
+                <div class="form-group">
+                    <label for="naamveld">Naam</label>
+                    <input name="naam" type="naam" class="form-control" id="naamveld" #naam
+                        (keyup)="resetKnop(naam,mail,picture)">
+                </div>
+                <div class="form-group">
+                    <label for="e-mailadres">E-mail</label>
+                    <input name="email" type="email" class="form-control" id="e-mailadres" aria-describedby="emailHelp"
+                        (keyup)="resetKnop(naam,mail,picture)" #mail>
+                </div>
+                <div class="form-group">
+                    <label for="afbeelding">Afbeelding</label>
+                    <input name="afbeelding" type="text" class="form-control" id="afbeelding"
+                        (keyup)="resetKnop(naam,mail,picture)" #picture>
+                </div>
+                <div class="form-group d-flex justify-content-end">
+                    <input type="button" id="resetgeg" class="btn btn-success mr-2"
+                        (click)="resetten(naam,mail,picture)" value="Reset" [disabled]="isWaar">
+                    <input type="button" class="btn btn-success mr-2" value="Opslaan"
+                        (click)='opslaanGeg(naam,mail,picture)' >
+                </div>
+            </form>
+        </div>
+    </div> 

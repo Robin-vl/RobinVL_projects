@@ -1,0 +1,17 @@
+.zichtbaar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.verborgen {
+    display: none;
+}
+.profilePic {
+    img {
+        width: 100px;
+        height: 100px;
+    }
+}
+#naamMed {
+    font-size: 1.2em;
+}

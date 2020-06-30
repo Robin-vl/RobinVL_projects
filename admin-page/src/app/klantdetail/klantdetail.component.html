@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>{{klant.voornaam | uppercase}} {{klant.naam | uppercase}}</h2>
+            <p>Straat: {{klant.straat}}</p>
+            <p>Postcode: {{klant.postcode}}</p>
+            <p>Plaats: {{klant.plaats}}</p><br>
+            <a [routerLink]="['/klanten']">&lt; Terug naar klanten </a>
+        </div>
+        <div class="col-6">
+            <h4>Eventuele aanpassing van klantgegevens</h4>
+            <form #klantForm="ngForm">
+                <div class="form-group">
+                    <label for="voornaam">Voornaam</label>
+                    <input type="text" class="form-control" id="voornaam" [(ngModel)]="klant.voornaam" name="voornaam">
+                </div>
+                <div class="form-group">
+                    <label for="naam">Achternaam</label>
+                    <input type="text" class="form-control" id="naam" [(ngModel)]="klant.naam" name="achternaam">
+                </div>
+                <div class="form-group">
+                    <label for="plaats">Plaats</label>
+                    <input type="text" class="form-control" id="plaats" [(ngModel)]="klant.plaats" name="plaats">
+                </div>
+                <div class="form-group">
+                    <label for="postcode">Postcode</label>
+                    <input type="text" class="form-control" id="postcode" [(ngModel)]="klant.postcode" name="postcode">
+                </div>
+                <div class="form-group">
+                    <label for="straat">Straat</label>
+                    <input type="text" class="form-control" id="straat" [(ngModel)]="klant.straat" name="straat">
+                </div>
+            </form>
+            <button class="btn btn-success" (click)="aanpassenKlant(klant)">Opslaan</button>
+        </div>
+    </div>

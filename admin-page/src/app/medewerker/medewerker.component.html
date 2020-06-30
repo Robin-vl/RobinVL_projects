@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row my-5">
+        <div class="col">
+            <h3>Medewerkers</h3>
+            <div class="lijst">
+                <div class="d-flex flex-row justify-content-end">
+                    <button type="button" class="btn btn-success mb-1" [routerLink]="['new']">+ Toevoegen
+                        medewerker</button></div>
+                <ul class="list-group">
+                    <li *ngFor="let persoon of med" class="list-group-item">
+                        <div class="d-flex flex-row justify-content-between"
+                            (click)='popup(persoon.naam,persoon.email)'>
+                            <div class="naamMail"><span id="naamMed">{{persoon.naam}}</span> <br>{{persoon.email}}
+                            </div>
+                            <div class="profilePic"><img class="rounded-circle" src="{{persoon.afbeelding}}">
+                            </div>
+                        </div>
+                        <button type="button" (click)="removeDb(persoon.id)" class="btn btn-danger mt-1">
+                            Verwijderen
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
