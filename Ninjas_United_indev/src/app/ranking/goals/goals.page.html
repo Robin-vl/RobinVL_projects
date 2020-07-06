@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-list>
+    <ion-item lines="none" *ngFor="let speler of spelerGeg; let i = index">
+      <ion-card>
+        <ion-card-header>
+          <ion-avatar>
+            <ion-img
+              src="https://www.w3schools.com/w3images/avatar2.png"
+            ></ion-img>
+          </ion-avatar>
+        </ion-card-header>
+        <ion-card-content> 
+          <ion-card-title>{{speler.bijnaam}}</ion-card-title>
+          <ion-card-subtitle>#{{i+1}}</ion-card-subtitle>
+         <p>Goals:{{speler.goals}}</p> 
+         <p>Wedstrijden: {{speler.wedstrijden}}</p> 
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

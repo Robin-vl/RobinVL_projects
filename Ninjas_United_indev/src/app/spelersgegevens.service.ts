@@ -11,11 +11,14 @@ import { LoginService } from './login.service';
 })
 export class SpelersgegevensService {
   constructor(private http: HttpClient, private loginServ:LoginService) {}
-  
+
   getSpelers(): Observable<SpelerGeg[]> {
+    let gegevens = JSON.parse(localStorage.getItem('login'));
+    const speler = gegevens['userid'];
+    const spelerToken  =gegevens['token']
     let userGeg: Logingeg = this.loginServ.gegevensGeb;
     return this.http
-      .get<SpelerGeg>("https://lzv-nu.firebaseio.com/spelers/.json?auth="+userGeg.tokenId)
+      .get<SpelerGeg>("https://lzv-nu.firebaseio.com/spelers/.json?auth="+spelerToken)
       .pipe(
         map((data) => {
           let spelers: SpelerGeg[] = [];

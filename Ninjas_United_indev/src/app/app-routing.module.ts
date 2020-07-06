@@ -32,6 +32,10 @@ const routes: Routes = [
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule),
     canLoad:[LoginGuard]
   },
+  {
+    path: 'ranking',
+    loadChildren: () => import('./ranking/ranking.module').then( m => m.RankingPageModule)
+  },
 ];
 
 @NgModule({
