@@ -11,11 +11,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgbModule, HttpClientModule, ReactiveFormsModule, FormsModule,IonicModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgbModule, HttpClientModule, ReactiveFormsModule, FormsModule,IonicModule, NgCalendarModule],
   providers: [
     StatusBar,
     SplashScreen,

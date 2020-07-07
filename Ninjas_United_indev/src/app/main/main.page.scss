@@ -11,7 +11,43 @@ ion-col{
     justify-content: center;
     align-items: center;
 }
-.swiper-container {
-    width: 600px;
-    height: 300px;
+
+#bar1{
+    height: 40px;
+    transform: rotate(1.8deg);
+    background-color: white;
+    position: relative;
+    top: -15px;
+    width:50%;
+}
+#bar2{
+    height: 40px;
+    transform: rotate(-1.8deg);
+    background-color: white;
+    position: relative;
+    top: -55px;
+    right:-50%;
+    width:50%;
+}
+#hoofding{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100px;
+    background-color: orange;
+}
+ion-toolbar{
+    --background: orange;
+}
+#imageHoofding{
+    position: relative;
+    top:-50%; 
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    border:5px solid white;
+}
+ion-content{
+    height: 100vh;
+    top:-13%
 }

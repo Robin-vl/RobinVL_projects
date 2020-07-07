@@ -1,10 +1,23 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar class="ion-text-center">
     <ion-title>Welkom {{naamUser.naam}}</ion-title>
     <ion-button fill="outline" slot="end" (click)="logout()">
       <ion-icon name="log-out-outline"></ion-icon>
     </ion-button> 
   </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <div id="hoofding">
+    <h1>Welkom {{naamUser.naam}}</h1>
+  <!--   <ion-button fill="outline" slot="end" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>  -->
+  </div>
+  <div id="bar1"></div>
+  <div id="bar2"></div>
+  <ion-avatar id="imageHoofding">
+    <ion-img src="https://www.w3schools.com/bootstrap4/img_avatar1.png"></ion-img>
+  </ion-avatar>
 </ion-header>
 
 <ion-content>

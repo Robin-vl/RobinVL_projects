@@ -4,13 +4,30 @@
     <ion-back-button slot="start"></ion-back-button>
   </ion-toolbar>
 </ion-header>
-<!-- ion item best gebruiken -->
+under construction 
 <ion-content>
 <ion-grid>
   <ion-row>
     <ion-col>
-    <h1>Under construction</h1>
+    <h1>{{maanden[selectedDate.getUTCMonth()]}} {{this.selectedDate.getUTCFullYear()}}</h1>
+    <calendar [eventSource]="eventSource"
+    [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate"
+    (onCurrentDateChanged)="onCurrentDateChanged($event)"
+    (onRangeChanged)="reloadSource($event)"
+    (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    (onTimeSelected)="onTimeSelected($event)"
+    step="30">  
+</calendar>
+<ion-button (click)="addEvent()">Add Event</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+
     </ion-col>
   </ion-row>
 </ion-grid>
+
 </ion-content>
