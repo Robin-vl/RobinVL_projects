@@ -19,8 +19,10 @@ export class GoalsPage implements OnInit {
       this.spelerGeg.sort((a,b)=>{
         if(a.goals<b.goals){
           return 1;
-        }else{
+        }else if(a.goals>b.goals){
           return -1;
+        }else{
+          return 0;
         }
       })
     });

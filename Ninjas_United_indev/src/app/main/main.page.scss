@@ -15,19 +15,19 @@ ion-col{
 #bar1{
     height: 40px;
     transform: rotate(1.8deg);
-    background-color: white;
+    background-color: black;
     position: relative;
     top: -15px;
-    width:50%;
+    width:52%;
 }
 #bar2{
     height: 40px;
     transform: rotate(-1.8deg);
-    background-color: white;
+    background-color: black;
     position: relative;
     top: -55px;
     right:-50%;
-    width:50%;
+    width:52%;
 }
 #hoofding{
     display: flex;
@@ -41,13 +41,18 @@ ion-toolbar{
 }
 #imageHoofding{
     position: relative;
-    top:-50%; 
+    top:-42.5%; 
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
-    border:5px solid white;
+    border:5px solid black;
 }
 ion-content{
-    height: 100vh;
-    top:-13%
+    height: 100%;
+    z-index: 3;
+    position: relative;
+}
+ion-header{
+    background: rgba(255, 166, 0, 1);
+    border-radius: 0 0 85% 85% / 30%;
 }

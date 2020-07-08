@@ -6,12 +6,14 @@
     </ion-button> 
   </ion-toolbar>
 </ion-header> -->
-<ion-header>
+<ion-header class="ion-no-border">
   <div id="hoofding">
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button color="warning" fill="outline"  (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
     <h1>Welkom {{naamUser.naam}}</h1>
-  <!--   <ion-button fill="outline" slot="end" (click)="logout()">
-      <ion-icon name="log-out-outline"></ion-icon>
-    </ion-button>  -->
   </div>
   <div id="bar1"></div>
   <div id="bar2"></div>
