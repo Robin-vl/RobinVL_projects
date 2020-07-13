@@ -6,6 +6,7 @@ import { Component, OnInit } from "@angular/core";
 import { Plugins, HapticsImpactStyle } from "@capacitor/core";
 import { SpelerGeg } from "../speler-geg";
 import { Wedstrijd } from "../wedstrijd";
+import { clear } from 'console';
 
 const { Haptics } = Plugins;
 
@@ -24,13 +25,16 @@ export class TimerPage implements OnInit {
   public startKnop: boolean = false;
   public pauze: boolean;
   public countD;
-  public min: number = 25;
-  public sec: number = 0;
+  public min: any= 25;
+  public sec: any = 0;
   public timeLeft;
   public dataSpelers: SpelerGeg[] = [];
   public wedstrijden: Wedstrijd[] = [];
   public matchStat: Match[] = [];
   public reedsAanw: boolean = false;
+  public percentage: number = 0;
+  public radius: number = 75;
+  public progress: number = 0;
   ngOnInit(): void {}
   ionViewWillEnter() {
     this.getGegevens();
@@ -41,6 +45,8 @@ export class TimerPage implements OnInit {
     this.min = 25;
     this.sec = 0;
     this.startKnop = false;
+    this.percentage = 0;
+    this.progress = 0;
     clearInterval(this.tijdFunc);
   }
   pauseTimer() {
@@ -62,6 +68,15 @@ export class TimerPage implements OnInit {
       this.timeLeft = this.countD - now;
       this.min = Math.floor((this.timeLeft % (1000 * 60 * 60)) / (1000 * 60));
       this.sec = Math.floor((this.timeLeft % (1000 * 60)) / 1000);
+      if(this.min <10){
+        this.min = "0" + this.min;
+      }
+      if(this.sec <10){
+        this.sec = "0" + this.sec;
+      }
+      this.percentage = Math.floor((this.progress/1500)*100);
+      console.log(this.percentage, this.progress, this.min);
+      this.progress++;
       if (this.min === 0 && this.sec === 0) {
         clearInterval(this.tijdFunc);
         Haptics.vibrate();
@@ -86,31 +101,7 @@ export class TimerPage implements OnInit {
     });
   }
   liveMatch(naam: string) {
-    //NIET OK => Alternatieve manier voor ontwikkelen!!!
-/*     if(this.matchStat.length ==0){
-      let playerStat: Match = new Match(naam);
-      if (this.wedstrijdForm.get("goalAss").value === "goal") {
-        playerStat.goals++;
-      } else if (this.wedstrijdForm.get("goalAss").value === "assist") {
-        playerStat.assists++;
-      }
-      this.matchStat.push(playerStat);
-    }else{
-      for(let i of this.matchStat){
-        if(i.speler != naam){
-          this.reedsAanw = false;
-          let playerStat: Match = new Match(naam);
-          if (this.wedstrijdForm.get("goalAss").value === "goal") {
-            playerStat.goals++;
-          } else if (this.wedstrijdForm.get("goalAss").value === "assist") {
-            playerStat.assists++;
-          }
-          this.matchStat.push(playerStat);
-        }else{
-          this.reedsAanw = true;
-        }
-      } 
-    } */
+    //nog aan te maken voor doorsturen data
   }
 
   optellenGoals(i: number) {

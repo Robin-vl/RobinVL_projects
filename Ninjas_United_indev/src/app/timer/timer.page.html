@@ -9,9 +9,23 @@
 <ion-content>
   <ion-card class="ion-text-center">
     <ion-card-title *ngIf="!(min ==0 && sec ==0)" id="min"
-      ><span *ngIf="min <10">0</span>{{min}} :
-      <span *ngIf="sec <10">0</span>{{sec}}</ion-card-title
-    >
+      ><!-- <span *ngIf="min <10">0</span>{{min}} :
+      <span *ngIf="sec <10">0</span>{{sec}} -->
+      <circle-progress (click)="tim()"
+      [percent]="percentage"
+      [radius]="radius"
+      [showTitle]="true"
+      [showSubtitle]="false"
+      [showUnits]="false"
+      [title]=" min +':' +sec"
+      [outerStrokeWidth]="16"
+      [innerStrokeWidth]="8"
+      [outerStrokeColor]="'#ffa500'"
+      [innerStrokeColor]="'#ffd994'"
+      [animation]="true"
+      [animationDuration]="300"
+    ></circle-progress>
+      </ion-card-title>
     <ion-card-title *ngIf="min ==0 && sec ==0">Time's up!</ion-card-title>
     <ion-card-content>
       <ion-button color="warning" (click)="tim()" [disabled]="startKnop">
