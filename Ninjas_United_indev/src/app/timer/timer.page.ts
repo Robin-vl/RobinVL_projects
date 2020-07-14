@@ -6,7 +6,6 @@ import { Component, OnInit } from "@angular/core";
 import { Plugins, HapticsImpactStyle } from "@capacitor/core";
 import { SpelerGeg } from "../speler-geg";
 import { Wedstrijd } from "../wedstrijd";
-import { clear } from 'console';
 
 const { Haptics } = Plugins;
 

@@ -7,5 +7,12 @@
 
 <ion-content>
   <ion-item> <ion-icon slot="start" name="moon-sharp"></ion-icon>Dark Mode<ion-toggle slot="end" name="dark" id="darkToggle"(ionChange)="darken($event)"></ion-toggle></ion-item>
-  <!-- Lettertype? lettergr? themakleur?-->
+
+  <ion-item>
+    <ion-icon slot="start" name="color-palette-outline"></ion-icon>
+    <ion-button slot="end" color="medium" (click)="changeTheme('autumn')">Autumn</ion-button>
+    <ion-button slot="end" color="medium" (click)="changeTheme('night')">Dark</ion-button>
+    <ion-button slot="end" color="medium" (click)="changeTheme('neon')">Neon</ion-button>
+    <ion-button slot="end" color="medium" (click)="changeTheme('')">Default</ion-button>
+  </ion-item>
 </ion-content>

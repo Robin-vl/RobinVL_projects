@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { Logingeg } from './../logingeg';
 import { SpelerGeg } from './../speler-geg';
 import { UsernaamService } from './../usernaam.service';
 import { Component, OnInit } from '@angular/core';
