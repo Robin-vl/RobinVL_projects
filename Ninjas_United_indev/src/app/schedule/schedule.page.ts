@@ -1,8 +1,10 @@
-import { WedstrijdenService } from './../wedstrijden.service';
+import { WedstrijdenService } from './wedstrijden.service';
 import { Component, OnInit, ViewChild, LOCALE_ID, Inject } from '@angular/core';
 import { CalendarComponent } from 'ionic2-calendar';
 import { AlertController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
+import { Plugins } from "@capacitor/core";
+
 
 @Component({
   selector: 'app-schedule',
@@ -70,12 +72,10 @@ export class SchedulePage implements OnInit {
       header: event.title,
       subHeader: event.location,
       message: `Startuur: ${start} - Einduur: ${einde}`,
-      buttons: ['Ok']
+      buttons: ['Sluiten']
     });
     alert.present();
   }
-
-
 
   onCurrentDateChanged(event: Date) {
     console.log('current date change: ' + event);

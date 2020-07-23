@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Logingeg } from './logingeg';
+import { Logingeg } from 'src/app/logingeg';
 import { LoginService } from 'src/app/login.service';
 import { Wedstrijd } from './wedstrijd';
 import { Injectable } from '@angular/core';

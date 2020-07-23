@@ -1,11 +1,11 @@
-import { Match } from "./../match";
-import { WedstrijdenService } from "./../wedstrijden.service";
+import { Match } from "./match";
+import { WedstrijdenService } from "src/app/schedule/wedstrijden.service";
 import { SpelersgegevensService } from "./../spelersgegevens.service";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { Plugins, HapticsImpactStyle } from "@capacitor/core";
 import { SpelerGeg } from "../speler-geg";
-import { Wedstrijd } from "../wedstrijd";
+import { Wedstrijd } from "src/app/schedule/wedstrijd";
 
 const { Haptics } = Plugins;
 
